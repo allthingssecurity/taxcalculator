@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equity Capital Gains Calculator</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <div class="brand">
+        <div class="logo">EQ</div>
+        <div>
+          <h1>Equity Capital Gains Calculator</h1>
+          <p class="subtitle">FIFO-based STCG/LTCG calculator for Indian equities</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Upload Transactions</h2>
+      <p class="muted">Upload an Excel (.xlsx) with a sheet named <strong>Transactions</strong>. <a href="/sample/template.xlsx">Download template</a>.</p>
+      <form id="upload-form" class="upload">
+        <input class="file" type="file" name="file" accept=".xlsx" required />
+        <button type="submit">Process</button>
+      </form>
+      <div id="messages"></div>
+      <div class="disclaimer muted">This tool is for tracking and analysis only. It does not constitute legal or tax advice.</div>
+    </section>
+
+    <section id="results" style="display:none;">
+      <div class="grid">
+        <div class="card">
+          <h3>Overall Summary</h3>
+          <div id="overall-cards" class="metrics"></div>
+        </div>
+        <div class="card">
+          <h3>Downloads</h3>
+          <div id="downloads" class="downloads"></div>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Per Scrip Summary</h3>
+        </div>
+        <div id="per-scrip"></div>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Realized Lots</h3>
+          <div class="filters">
+            <input type="text" id="filter-scrip" placeholder="Filter by scrip" />
+            <select id="filter-term" title="Term">
+              <option value="">All Terms</option>
+              <option value="ST">Short Term</option>
+              <option value="LT">Long Term</option>
+            </select>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-trace" />
+              <span>Show trace columns</span>
+            </label>
+          </div>
+        </div>
+        <div id="realized"></div>
+        <p class="muted small">Term classification: Short Term (&lt; 365 days), Long Term (≥ 365 days).</p>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Open Positions</h3>
+        </div>
+        <div id="open"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span class="muted">© 2026 Capital Gains Calculator · INR only · FIFO · 365-day ST/LT</span>
+    </div>
+  </footer>
+  <script src="/static/app.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equity Capital Gains Calculator (India)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Equity Capital Gains Calculator</h1>
+      <p class="tag">FIFO-based STCG/LTCG for Indian equities</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/allthingssecurity/taxcalculator">View on GitHub</a>
+        <a class="btn secondary" href="#quickstart">Quickstart</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" id="overview">
+      <h2>Overview</h2>
+      <p>This open-source tool processes an uploaded Excel of buy/sell transactions and computes realized lots using FIFO, classifies Short/Long Term capital gains, and produces summaries and downloads (CSV/Excel). Built with FastAPI and pandas.</p>
+      <ul>
+        <li>Deterministic FIFO matching per scrip</li>
+        <li>ST/LT classification: ST if &lt; 365 days; LT otherwise</li>
+        <li>Validations: missing columns, invalid dates, negative quantities, over-selling</li>
+        <li>Exports: Realized lots, per-scrip summary, overall summary, open positions</li>
+      </ul>
+    </section>
+
+    <section class="card" id="quickstart">
+      <h2>Quickstart</h2>
+      <ol>
+        <li>Clone the repo: <code>git clone https://github.com/allthingssecurity/taxcalculator.git</code></li>
+        <li>Create venv + install deps:<br><code>python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt</code></li>
+        <li>Run the server: <code>uvicorn app.main:app --reload</code></li>
+        <li>Open <code>http://127.0.0.1:8000</code> and upload your Excel</li>
+      </ol>
+      <p>Download a sample template from <code>/sample/template.xlsx</code> when the server is running.</p>
+    </section>
+
+    <section class="card" id="excel">
+      <h2>Excel Format</h2>
+      <p>Sheet: <code>Transactions</code> (or the first sheet). Case-insensitive columns:</p>
+      <ul>
+        <li><code>TradeDate</code> (YYYY-MM-DD or Excel date)</li>
+        <li><code>Scrip</code>, <code>Action</code> (BUY/SELL), <code>Quantity</code>, <code>Price</code></li>
+        <li>Optional: <code>Brokerage</code>, <code>Charges</code>, <code>STT</code>, <code>Exchange</code>, <code>ISIN</code>, <code>Notes</code></li>
+      </ul>
+    </section>
+
+    <section class="card" id="reports">
+      <h2>Reports</h2>
+      <ul>
+        <li><strong>Realized Lots</strong>: matching buy/sell lots with costs, proceeds, gain, holding days, ST/LT, and references</li>
+        <li><strong>Per-Scrip Summary</strong>: STCG, LTCG, net gain, proceeds, cost, #sells, #lots</li>
+        <li><strong>Overall Summary</strong>: totals</li>
+        <li><strong>Open Positions</strong>: remaining quantities and cost basis</li>
+      </ul>
+    </section>
+
+    <section class="card" id="notes">
+      <h2>Notes</h2>
+      <ul>
+        <li>Equity shares only; INR; no corporate actions in v1</li>
+        <li>This is for tracking/analysis; not legal/tax advice</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 · taxcalculator</div>
+  </footer>
+</body>
+</html>
+

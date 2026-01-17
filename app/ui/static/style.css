@@ -1,0 +1,33 @@
+:root { --bg:#0b1020; --card:#10162f; --muted:#9aa4b2; --text:#e6e9ef; --accent:#3b82f6; --accent-2:#1f6feb; --border:#1e2545; --pos:#10b981; --neg:#ef4444; }
+* { box-sizing: border-box; }
+body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:var(--bg); color:var(--text); }
+.container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+.app-header { border-bottom: 1px solid var(--border); background: #0c1226; }
+.brand { display:flex; align-items:center; gap:16px; }
+.brand .logo { width:40px; height:40px; border-radius:8px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display:flex; align-items:center; justify-content:center; font-weight:700; }
+h1 { margin: 0 0 4px; font-size: 20px; }
+.subtitle { margin:0; color: var(--muted); font-size: 13px; }
+.card { background: var(--card); border:1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin: 18px 0; }
+.grid { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.toolbar { display:flex; align-items:center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.filters { display:flex; gap: 8px; align-items:center; }
+.upload { display:flex; gap: 12px; align-items:center; }
+input[type="text"], select, .file { padding: 8px 10px; border-radius: 8px; border:1px solid var(--border); background: #0a1022; color: var(--text); }
+button { padding: 10px 14px; border: 0; background: var(--accent); color: white; border-radius: 8px; cursor:pointer; font-weight:600; }
+button:hover { background: var(--accent-2); }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 4px; }
+th, td { border-bottom: 1px solid var(--border); padding: 8px 10px; font-size: 13px; }
+th { color: var(--muted); text-align:left; cursor:pointer; }
+.error { color: #fca5a5; }
+.warn { color: #fbbf24; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.downloads a { margin-right: 10px; color: var(--accent); text-decoration: none; }
+.downloads a:hover { text-decoration: underline; }
+.metrics { display:flex; gap: 12px; flex-wrap: wrap; }
+.metric { background:#0a1022; border:1px solid var(--border); border-radius: 10px; padding: 10px 12px; min-width: 160px; }
+.metric .label { color: var(--muted); font-size: 12px; }
+.metric .value { font-size: 20px; font-weight: 700; }
+.pos { color: var(--pos); }
+.neg { color: var(--neg); }
+.footer { border-top:1px solid var(--border); padding: 18px 0 30px; color: var(--muted); }
