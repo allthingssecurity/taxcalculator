@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tax Calculator – Web Client</title>
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Capital Gains Calculator – Web Client</h1>
+      <p class="tag">Use this page with your local backend running on your machine.</p>
+    </div>
+  </header>
+  <main class="container">
+    <section class="card">
+      <h2>Connect to Backend</h2>
+      <p class="muted">Default points to your local server. Change if needed.</p>
+      <div class="row">
+        <label for="api-base">API Base URL</label>
+        <input id="api-base" type="text" value="http://127.0.0.1:6543" />
+        <button id="save-base">Save</button>
+      </div>
+      <div class="muted small">CORS is enabled by default for GitHub Pages and localhost. You can also set env var ALLOWED_ORIGINS on the server.</div>
+    </section>
+
+    <section class="card">
+      <h2>Upload Transactions</h2>
+      <form id="upload-form" class="upload">
+        <input class="file" type="file" name="file" accept=".xlsx" required />
+        <button type="submit">Process</button>
+      </form>
+      <div id="messages"></div>
+    </section>
+
+    <section id="results" style="display:none;">
+      <div class="grid">
+        <div class="card">
+          <h3>Overall Summary</h3>
+          <div id="overall-cards" class="metrics"></div>
+        </div>
+        <div class="card">
+          <h3>Downloads</h3>
+          <div id="downloads" class="downloads"></div>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Per Scrip Summary</h3>
+        </div>
+        <div id="per-scrip"></div>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Realized Lots</h3>
+          <div class="filters">
+            <input type="text" id="filter-scrip" placeholder="Filter by scrip" />
+            <select id="filter-term" title="Term">
+              <option value="">All Terms</option>
+              <option value="ST">Short Term</option>
+              <option value="LT">Long Term</option>
+            </select>
+            <label class="toggle">
+              <input type="checkbox" id="toggle-trace" />
+              <span>Show trace columns</span>
+            </label>
+          </div>
+        </div>
+        <div id="realized"></div>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <h3>Open Positions</h3>
+        </div>
+        <div id="open"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
+
